@@ -38,8 +38,9 @@
 								<tr>
 								<c:forEach var="lugar" items="${map.value}">
 									<td class="fileira-assento"><figure>
-										<svg class="assento disponivel" data-lugar="${lugar}" id="${lugar.id}"  version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										<svg class="assento ${sessao.isDisponivel(lugar)?'disponivel':'ocupado'}" onclick="${sessao.isDisponivel(lugar)?'changeCheckbox(this)':''} data-lugar="${lugar}" id="${lugar.id}"  version="1.0" id="SEAT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 318.224 305.246" enable-background="new 0 0 318.224 305.246" xml:space="preserve">
+										
 											<g id="FILL">
 												<path d="M269.395,132.246h-15.02V51.414c0-11.758-9.492-21.248-21.248-21.248H85.097
 													c-11.757,0-21.248,9.49-21.248,21.248v80.833H48.827c-8.535,0-15.127,7.505-14.024,15.971l11.406,87.625
@@ -47,6 +48,7 @@
 													c6.68,0,12.448-4.672,13.833-11.209l4.648-21.933l0.009,0.09h17.959c3.569,0,6.585-2.649,7.045-6.187l11.407-87.625
 													C284.522,139.751,277.931,132.246,269.395,132.246z"/>
 											</g>
+											
 											<path id="STROKE" fill="#4F4F4F" d="M290.664,127.709c-5.374-6.118-13.126-9.628-21.269-9.628h-0.854V51.414
 												c0-19.526-15.886-35.414-35.414-35.414H85.097c-19.528,0-35.414,15.888-35.414,35.414v66.667h-0.856
 												c-8.144,0-15.896,3.51-21.271,9.628c-5.374,6.121-7.852,14.262-6.799,22.338l11.406,87.625
@@ -63,6 +65,7 @@
 												c1.681-2.082,4.185-3.272,6.854-3.272h155.634c2.67,0,5.174,1.19,6.854,3.272c1.688,2.075,2.338,4.773,1.785,7.394l-8.397,39.591
 											c-0.858,4.053-4.496,7-8.639,7H89.678C85.534,269.772,81.896,266.825,81.039,262.772z"/>
 										</svg>
+										
 										<input type="checkbox" value="${lugar.id}" >
 									    <figcaption>${lugar.posicao}</figcaption>
 									</figure></td>
