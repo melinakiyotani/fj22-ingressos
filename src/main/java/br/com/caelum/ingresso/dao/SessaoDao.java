@@ -7,12 +7,13 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 
 import br.com.caelum.ingresso.model.Filme;
 import br.com.caelum.ingresso.model.Sala;
 import br.com.caelum.ingresso.model.Sessao;
 
-@Controller
+@Repository
 public class SessaoDao {
 
 	@PersistenceContext
@@ -34,5 +35,8 @@ public class SessaoDao {
 		return manager.createQuery("select s from Sessao s where s.filme = :filme", Sessao.class)
 				.setParameter("filme",filme)
 				.getResultList();
+	}
+	public Sessao findOne(Integer id) {
+		return manager.find(Sessao.class, id);
 	}
 }
